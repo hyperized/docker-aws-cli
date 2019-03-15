@@ -11,7 +11,6 @@ RUN apk add --no-cache python3 \
 
 USER awscli
 
-RUN pip3 install awscli --upgrade --user
+RUN pip3 install --no-warn-script-location awscli --upgrade --user
 
-ENTRYPOINT ["./home/awscli/.local/bin/aws"]
-CMD ["--version"]
+ENV PATH="/home/awscli/.local/bin/:${PATH}"
